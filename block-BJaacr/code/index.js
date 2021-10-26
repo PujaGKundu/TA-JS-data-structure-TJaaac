@@ -29,7 +29,7 @@ console.log(got.houses.length);
 // 3. Log the name of all houses in got one by one
 
 for (let house of got.houses){
-  console.log(house);
+  console.log(house.name);
 }
 
 // 4. Log the name of all the people in house Starks (index 0) one by one
@@ -80,7 +80,7 @@ for (let i = 0; i < got.houses[1].people.length; i++){
 
 let houseNames = [];
 for (let names of got.houses){
-  houseNames.push(names)
+  houseNames.push(names.name)
 }
 console.log(houseNames);
 
