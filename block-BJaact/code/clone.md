@@ -13,7 +13,7 @@ person.firstName = 'Arya';
 console.log(person2.firstName); // Arya - as the object is been copied they point to a same memory location
 console.log(person.firstName); // Arya - as the object is been copied they point to a same memory location
 console.log(person.lastName); // Doe - as the object is been copied they point to a same memory location
-console.log(person == person2); // Doe - as the object is been copied they point to a same memory location
+console.log(person == person2); // true - as the object is been copied they point to a same memory location
 console.log(person === person2); // true
 console.log(person.lastName === person2.lastName); // true
 ```
@@ -38,7 +38,7 @@ person.firstName = 'Arya';
 person.city = 'Navada';
 
 console.log(personTwo.firstName); // John - as the object is been cloned it has a different memory location
-console.log(person.firstName); // Arys - as the object is been cloned it has a different memory location
+console.log(person.firstName); // Arya - as the object is been cloned it has a different memory location
 console.log(personTwo.lastName); // Doe - as the object is been cloned it has a different memory location
 console.log(person.firstName === personTwo.firstName); // false -  - as the object is been cloned it has a different memory location
 console.log(person == personTwo); // false
@@ -70,7 +70,7 @@ person.firstName = 'Arya';
 person.city = 'Navada';
 
 console.log(personTwo.firstName); // John - as the object is been cloned it has a different memory location
-console.log(person.firstName); // Arys - as the object is been cloned it has a different memory location
+console.log(person.firstName); // Arya - as the object is been cloned it has a different memory location
 console.log(personTwo.lastName); // Doe - as the object is been cloned it has a different memory location
 console.log(person.firstName === personTwo.firstName); // false -  - as the object is been cloned it has a different memory location
 console.log(person == personTwo); // false
@@ -104,7 +104,7 @@ let blogs = [
 ];
 
 // Your code goes here
-let clonedBlogs = {...blogs,};
+let clonedBlogs = [{...blogs[0]}, {...blogs[1]}, {...blogs[2]}];
 ```
 
 5. Clone the `question` variable into a new variable named `questionClone`
@@ -130,7 +130,7 @@ var questions = [
 ];
 
 // Your code goes here
-let questionClone = [...questions];
+let questionClone = [{...questions[0], responses: [...questions[0].response]}, {...questions[1], responses: [...questions[1].response]}];
 ```
 
 6. Clone the `allBlogs` variable into a new variable named `allBlogsClone`
@@ -158,7 +158,7 @@ var allBlogs = {
 };
 
 // Your code goes here
-let allBlogsClone = {...allBlogs,};
+let allBlogsClone = {...allBlogs, author: {...allBlogs.author}, comments: [{...allBlogs.comments[0]}, {...allBlogs.comments[1]}]};
 ```
 
 7. Clone the `person` variable into a new variable named `clonedPerson`
@@ -192,7 +192,7 @@ let person = [
 ];
 
 // Your code goes here
-let clonedPerson = [...person];
+let clonedPerson = JSON.parse(JSON.stringify(person));
 ```
 
 8. Write a function named `cloneObject` that accepts an object and returns the clone of the object
@@ -200,8 +200,7 @@ let clonedPerson = [...person];
 ```js
 function cloneObject(obj) {
   // your code
-  let cloneOfObj = {...obj,};
-  return cloneOfObj;
+  return JSON.parse(JSON.stringify(person));
 }
 
 // Run the test below to check your function
